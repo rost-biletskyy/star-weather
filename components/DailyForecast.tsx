@@ -32,7 +32,7 @@ const DailyForecast = ({ data }: Props) => {
     return (
         <section>
             <h3 className="section-title">7 day Forecast</h3>
-            <div className="flex flex-col gap-1.5 md:gap-2 text-center">
+            <div className="flex flex-col gap-1.5 md:gap-3 text-center">
                 {data.map((day, index) => (
                     <div
                         key={day.dt}
@@ -48,7 +48,7 @@ const DailyForecast = ({ data }: Props) => {
                         </div>
 
                         <img
-                            src={`https://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+                            src={`https://openweathermap.org/img/wn/${day.weather[0].icon.replace('n', 'd')}.png`}
                             className="-my-2.5 -ml-2 inline-block size-10"
                         />
 

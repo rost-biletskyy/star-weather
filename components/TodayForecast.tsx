@@ -15,7 +15,7 @@ const TodayForecast = ({ data }: Props) => {
                     labels={data
                         .slice(0, 24)
                         .map(hour =>
-                            new Date(hour.dt * 1000).toLocaleString('en-US', { hour: 'numeric', hour12: true }),
+                            new Date(hour.dt * 1000).toLocaleString('en-US', { hour: 'numeric', hour12: true, weekday:"short" }),
                         )}
                     values={data.slice(0, 24).map(hour => hour.temp)}
                     label="Temperature (°C)"

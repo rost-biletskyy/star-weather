@@ -1,12 +1,6 @@
 import OpenWeather from '@/lib/OpenWeather';
-import weatherData from '@/sample/weatherData';
-import type { DailyEntity, WeatherType } from '@/types/WeatherType';
+import type { WeatherType } from '@/types/WeatherType';
 import { isAxiosError } from 'axios';
-
-interface Params {
-    lat: number;
-    lon: number;
-}
 interface Params {
     lat: number;
     lon: number;
@@ -41,30 +35,10 @@ const fetchWeather = async ({ lat, lon }: Params): Promise<WeatherType> => {
         const hourlyData = forecast.data.list.slice(0, 24).map((item: any) => ({
             dt: item.dt,
             temp: item.main.temp,
-            feels_like: item.main.feels_like,
-            pressure: item.main.pressure,
-            humidity: item.main.humidity,
-            dew_point: getDewPoint(item.main.temp, item.main.humidity),
-            uvi: 0,
-            clouds: item.clouds.all,
-            visibility: item.visibility || 10000,
-            wind_speed: item.wind.speed,
-            wind_deg: item.wind.deg,
-            wind_gust: item.wind.gust || 0,
             weather: item.weather,
-            pop: item.pop || 0,
-            rain: item.rain ? { '1h': item.rain['3h'] / 3 } : null,
         }));
 
         const dailyData = processDailyForecast(forecast.data.list, currentData);
-
-        try {
-            const airPollution = await OpenWeather.get('data/2.5/air_pollution', { params: { lat, lon } });
-
-            if (airPollution.data?.list?.[0]) {
-                processedCurrent.uvi = airPollution.data.list[0].main.uvi || 0;
-            }
-        } catch (e) {}
 
         return {
             lat,
@@ -73,6 +47,7 @@ const fetchWeather = async ({ lat, lon }: Params): Promise<WeatherType> => {
             timezone_offset: currentData.timezone,
             current: processedCurrent,
             hourly: hourlyData,
+            // @ts-ignore
             daily: dailyData,
         };
     } catch (error) {
@@ -95,7 +70,6 @@ const processDailyForecast = (forecastList: any[], currentWeather: any) => {
 
     return Object.entries(dailyMap).map(([date, items]) => {
         const temps = items.map(i => i.main.temp);
-        const feels = items.map(i => i.main.feels_like);
         const dayHours = items.filter(i => {
             const hour = new Date(i.dt * 1000).getHours();
             return hour >= 8 && hour <= 18;
@@ -117,57 +91,18 @@ const processDailyForecast = (forecastList: any[], currentWeather: any) => {
             dt: new Date(date).getTime() / 1000,
             sunrise: currentWeather.sys.sunrise,
             sunset: currentWeather.sys.sunset,
-            moonrise: 0,
-            moonset: 0,
-            moon_phase: 0,
             temp: {
                 day: avg(dayHours.map(i => i.main.temp)),
                 min: Math.min(...temps),
                 max: Math.max(...temps),
                 night: avg(nightHours.map(i => i.main.temp)),
-                eve: avg(
-                    items
-                        .filter(i => new Date(i.dt * 1000).getHours() >= 18 && new Date(i.dt * 1000).getHours() <= 21)
-                        .map(i => i.main.temp)
-                ),
-                morn: avg(
-                    items.filter(i => new Date(i.dt * 1000).getHours() >= 6 && new Date(i.dt * 1000).getHours() <= 9).map(i => i.main.temp)
-                ),
             },
-            feels_like: {
-                day: avg(dayHours.map(i => i.main.feels_like)),
-                night: avg(nightHours.map(i => i.main.feels_like)),
-                eve: avg(
-                    items
-                        .filter(i => new Date(i.dt * 1000).getHours() >= 18 && new Date(i.dt * 1000).getHours() <= 21)
-                        .map(i => i.main.feels_like)
-                ),
-                morn: avg(
-                    items
-                        .filter(i => new Date(i.dt * 1000).getHours() >= 6 && new Date(i.dt * 1000).getHours() <= 9)
-                        .map(i => i.main.feels_like)
-                ),
-            },
-            pressure: avg(items.map(i => i.main.pressure)),
-            humidity: avg(items.map(i => i.main.humidity)),
-            dew_point: avg(items.map(i => getDewPoint(i.main.temp, i.main.humidity))),
             wind_speed: avg(items.map(i => i.wind.speed)),
             wind_deg: currentWeather.wind.deg,
             wind_gust: Math.max(...items.map(i => i.wind.gust || 0)),
             weather: [mainWeather],
-            clouds: avg(items.map(i => i.clouds.all)),
-            pop: Math.max(...items.map(i => i.pop || 0)),
-            rain: items.some(i => i.rain?.['3h']) ? items.reduce((sum: number, i: any) => sum + (i.rain?.['3h'] || 0), 0) : null,
-            uvi: 0,
         };
     });
-
-    function getDewPoint(temp: number, humidity: number): number {
-        const a = 17.27,
-            b = 237.7;
-        const alpha = (a * temp) / (b + temp) + Math.log(humidity / 100);
-        return (b * alpha) / (a - alpha);
-    }
 };
 
 export default fetchWeather;
