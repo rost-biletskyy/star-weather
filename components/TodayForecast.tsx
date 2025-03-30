@@ -8,7 +8,7 @@ interface Props {
 const TodayForecast = ({ data }: Props) => {
     return (
         <section>
-            <h3 className="section-title">Today Forecast</h3>
+            <h3 className="section-title">Forecast</h3>
 
             <div>
                 <BarChart

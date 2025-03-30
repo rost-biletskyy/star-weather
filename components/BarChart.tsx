@@ -2,7 +2,7 @@
 
 import { Bar, Line } from 'react-chartjs-2';
 
-import { ChartDatasetProperties, ScriptableContext } from 'chart.js';
+import {  ScriptableContext } from 'chart.js';
 import _ from 'lodash';
 
 const graphConfig = {
