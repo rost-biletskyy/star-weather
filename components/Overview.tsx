@@ -4,6 +4,7 @@ import { FaClock, FaThermometerHalf } from 'react-icons/fa';
 import { TbWorldLatitude, TbWorldLongitude } from 'react-icons/tb';
 import type { City } from '@/types/CityType';
 import { MdLocationPin } from 'react-icons/md';
+import LocalDate from './LocalDate';
 
 const OverView = ({ data, city }: { data: Current; city: City }) => {
     return (
@@ -14,11 +15,7 @@ const OverView = ({ data, city }: { data: Current; city: City }) => {
                 </h3>
                 <p className="text-xs md:text-sm uppercase text-gray-400">
                     <FaClock className="mr-1 inline-block" />
-                    {new Date(data.dt * 1000).toLocaleString('en-IN', {
-                        weekday: 'short',
-                        hour: 'numeric',
-                        minute: '2-digit',
-                    })}
+                    <LocalDate date={data.dt * 1000} />
                 </p>
             </div>
             <div className="my-4 flex items-center justify-between">

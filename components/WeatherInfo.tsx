@@ -1,6 +1,4 @@
 import type { Current } from '@/types/WeatherType';
-import { title } from 'process';
-import { DiVim } from 'react-icons/di';
 import { FaCloud, FaWater, FaWind } from 'react-icons/fa';
 import { LuSunrise, LuSunset } from 'react-icons/lu';
 import { MdDewPoint, MdOutlineVisibility } from 'react-icons/md';
