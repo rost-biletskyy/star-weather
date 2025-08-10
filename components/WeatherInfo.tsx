@@ -8,74 +8,6 @@ interface Props {
     data: Current;
 }
 
-// {
-//     title: 'Wind',
-//     value: (
-//         <p>
-//             <span className="text-xl font-semibold">{(weather.wind.speed * 3.6).toFixed(0)}</span> km/h
-//         </p>
-//     ),
-//     details: `Direction: ${weather.wind.deg}°`,
-//     icon: <FaWind className="text-2xl md:text-3xl" />,
-// },
-// {
-//     title: 'Humidity',
-//     value: (
-//         <p>
-//             <span className="text-2xl font-semibold">{weather.main.humidity}</span> %
-//         </p>
-//     ),
-//     icon: <MdDewPoint className="text-2xl md:text-3xl" />,
-// },
-// {
-//     title: 'Pressure',
-//     value: (
-//         <p>
-//             <span className="text-2xl font-semibold">{weather.main.pressure}</span>
-//         </p>
-//     ),
-//     details: 'mBar',
-//     icon: <FaWater className="text-3xl" />,
-// },
-// {
-//     title: 'Visibility',
-//     value: (
-//         <p>
-//             <span className="text-xl font-semibold">{(weather.visibility / 1000).toFixed(2)}</span>
-//         </p>
-//     ),
-//     details: 'Kilometers',
-//     icon: <MdOutlineVisibility className="text-2xl md:text-3xl" />,
-// },
-// {
-//     title: 'Sunrise',
-//     value: (
-//         <p className="text-xl font-semibold">
-//             {new Date(weather.sys.sunrise * 1000).toLocaleTimeString('en-IN', {
-//                 hour: '2-digit',
-//                 minute: '2-digit',
-//                 hour12: false,
-//             })}
-//         </p>
-//     ),
-//     details: 'Morning',
-//     icon: <LuSunrise className="text-2xl md:text-3xl" />,
-// },
-// {
-//     title: 'Sunset',
-//     value: (
-//         <p className="text-xl font-semibold">
-//             {new Date(weather.sys.sunset * 1000).toLocaleTimeString('en-IN', {
-//                 hour: '2-digit',
-//                 minute: '2-digit',
-//                 hour12: false,
-//             })}
-//         </p>
-//     ),
-//     details: 'Evening',
-//     icon: <LuSunset className="text-2xl md:text-3xl" />,
-// }
-
 const WeatherInfo = ({ data }: Props) => {
     const cardData = [
         {
@@ -95,7 +27,6 @@ const WeatherInfo = ({ data }: Props) => {
         {
             title: 'UV Index',
             value: `${data.uvi}`,
-            // detail: 'Intensity',
             icon: <MdSunnySnowing />,
         },
         {

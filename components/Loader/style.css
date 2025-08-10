@@ -15,8 +15,6 @@
 
 
 #sun {
-    /* margin-left: -10px;
-    margin-top: 6px; */
     opacity: 1;
     position: absolute;
     left: 45%;
@@ -30,7 +28,6 @@
 
 #sun path {
     stroke-width: 0.18;
-    /* fill: #9ea1a4; */
 }
 
 @keyframes rotate {

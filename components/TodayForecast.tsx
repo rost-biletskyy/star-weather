@@ -23,7 +23,6 @@ const TodayForecast = ({ data }: Props) => {
             </div>
 
             <div className="mt-7 grid grid-cols-4 gap-2 text-center md:grid-cols-6 md:gap-3">
-                {/* remove odd hours */}
                 {data
                     .filter((_, index) => index % 2 === 0)
                     .slice(0, 12)
@@ -38,7 +37,6 @@ const TodayForecast = ({ data }: Props) => {
                             </p>
 
                             <img
-                                // replace the n in icon with d for day and n for night
                                 src={`https://openweathermap.org/img/wn/${hour.weather[0].icon.replace('n', 'd')}@2x.png`}
                                 className="-my-2.5 mx-auto md:scale-110 md:size-20"
                             />

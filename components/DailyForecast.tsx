@@ -6,28 +6,6 @@ interface Props {
     data: DailyEntity[];
 }
 
-// const getDailyForecast = (data: DailyEntity[]) => {
-//     const forecastGroup = _.chain(forecast.list)
-//         .groupBy(item => new Date(item.dt_txt).getDate())
-//         .values()
-//         .value();
-
-//     const dailyForecast = forecastGroup.map(day => {
-//         return {
-//             date: new Date(day[0].dt_txt),
-//             minTemp: _.minBy(day, 'main.temp_min')?.main.temp_min,
-//             maxTemp: _.maxBy(day, 'main.temp_max')?.main.temp_max,
-//             temp: _.meanBy(day, 'main.temp').toFixed(0),
-//             weather: day[0].weather[0],
-//             humidity: _.meanBy(day, 'main.humidity'),
-//             clouds: _.meanBy(day, 'clouds.all').toFixed(0),
-//             wind: _.meanBy(day, 'wind.speed').toFixed(0),
-//         };
-//     });
-
-//     return dailyForecast;
-// };
-
 const DailyForecast = ({ data }: Props) => {
     return (
         <section>

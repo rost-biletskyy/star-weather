@@ -1,82 +1,52 @@
- It's an advanced weather website where users can view current weather conditions, forecasts, air quality, weather maps, and more. The application is built using modern web development technologies to ensure a seamless and responsive user experience.
+# 🌦️ Weather Forecast App
 
-## Features
+A responsive weather web app that lets users view current conditions, multi-day forecasts, and air quality using the OpenWeather API. Built with modern tools for performance and developer productivity.
 
-- **Current Weather**: View the current weather conditions for any location.
-- **Weather Forecasts**: Access detailed weather forecasts for the upcoming days.
-- **Air Quality**: Check the air quality index and related information.
-- **Weather Maps**: Explore interactive weather maps for visualizing different weather parameters.
-- **Responsive Design**: Fully responsive design to provide a great experience on both desktop and mobile devices.
+---
 
-## Technologies Used
+## 🚀 Features
 
-- **Next.js**: A React framework for server-side rendering and generating static websites.
-- **TypeScript**: A typed superset of JavaScript that adds type safety and enhances development experience.
-- **Tailwind CSS**: A utility-first CSS framework for styling the application.
-- **Axios**: A promise-based HTTP client for making requests to the OpenWeather API.
-- **OpenWeather API**: Used to fetch weather data, forecasts, and air quality information.
+- 🌡️ Real-time weather by city
+- 📆 5-day forecast with min/max temps
+- 🌬️ Wind speed and weather description
+- 🌫️ Air quality index (AQI)
+- 🕘 Search history with reselect and remove
+- 📱 Fully responsive (mobile + desktop)
 
-## Screenshot
+---
 
-![Screenshot 1](public/banner.png)
+## 🧱 Tech Stack
 
-## Getting Started
+- **Next.js** + **TypeScript**
+- **Tailwind CSS** — styling
+- **Axios** — API requests
+- **OpenWeather API** — weather data
 
-Follow these instructions to set up the project on your local machine.
+---
 
-### Prerequisites
+## 📸 Screenshot
 
-Ensure you have the following installed:
+![Screenshot](public/banner.png)
 
-- Node.js (>= 14.x)
-- npm or yarn
+---
 
-### Installation
+## ⚙️ Getting Started
 
-1. **Clone the repository**:
+### 1. Clone the Repo
+```bash
+git clone https://github.com/noname321rosty/weather-forecast-app.git
+cd weather-forecast-app
 
-    ```bash
-    git clone https://github.com/devxprite/star-weather.git
-    cd star-weather
-    ```
+```
 
-2. **Install dependencies**:
+## Install Dependencies
+npm install
 
-    ```bash
-    npm install
-    ```
+## Configure Environment
+Create a .env.local file
+NEXT_PUBLIC_OPENWEATHER_API_KEY=your_openweather_api_key
 
-3. **Set up environment variables**:
+## Run the App
+npm run dev
 
-    Create a `.env.local` file in the root directory and add your OpenWeather API key:
-
-    ```bash
-    NEXT_PUBLIC_OPENWEATHER_API_KEY=your_openweather_api_key
-    ```
-
-4. **Run the development server**:
-
-    ```bash
-    npm run dev
-    ```
-
-    Open [http://localhost:3000](http://localhost:3000) with your browser to see the application in action.
-
-
-
-### Contributing
-Contributions are welcome! Feel free to open an issue or submit a pull request if you have any improvements to the project.
-
-### License
-Distributed under the MIT License. See `LICENSE` for more information.
-
-### Acknowledgements
-
-- [OpenWeather](https://openweathermap.org/)
-- [Next.js](https://nextjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Axios](https://axios-http.com/)
-- [Windy](https://www.windy.com/)
-
-### Support
-Give a ⭐️ if you found this project helpful!
+Visit http://localhost:3000

@@ -13,16 +13,13 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-    title: 'Star Weather',
+    title: 'Weathere forecast App',
     description:
         'An advanced weather website where users can view current weather conditions, forecasts, air quality, weather maps, and more.',
     keywords: [
         'weather',
         'forecast',
-        'air quality',
         'maps',
-        'star weather',
-        'starweather',
         'opensource',
         'open source',
         'react',
@@ -30,7 +27,7 @@ export const metadata: Metadata = {
         'tailwindcss',
         'typescript',
     ],
-    metadataBase: new URL('http://star-weather.vercel.app'),
+    metadataBase: new URL('https://weather-forecast-app-git-main-noname321rostys-projects.vercel.app'),
     openGraph: {
         images: [
             {

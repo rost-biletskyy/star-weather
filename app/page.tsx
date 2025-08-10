@@ -9,18 +9,11 @@ import fetchAir from '@/utils/fetchAir';
 import AirQuality from '@/components/AirQuality';
 import SunPosition from '@/components/SunPosition';
 
-// import fs from 'fs';
-// import weather from '@/sample/weatherData';
-// import air from '@/sample/airData';
-// import city from '@/sample/cityData';
-
 interface SearchParams {
     q?: string;
 }
 
 const Page = async ({ searchParams: { q = '' } }: { searchParams: SearchParams }) => {
-    // if (!q) return <p>Please Search for City</p>;
-
     const city = await fetchGeo(q);
     if (!city)
         return (
@@ -34,10 +27,6 @@ const Page = async ({ searchParams: { q = '' } }: { searchParams: SearchParams }
 
     const weather = await fetchWeather({ lat: city.lat, lon: city.lon });
     const air = await fetchAir({ lat: city.lat, lon: city.lon })
-
-    // fs.writeFileSync('sample/weatherData.ts', `export default ${JSON.stringify(weather)}`);
-    // fs.writeFileSync('sample/cityData.ts', `export default ${JSON.stringify(city)}`);
-    // fs.writeFileSync('sample/airData.ts', `export default ${JSON.stringify(air)}`);
 
     return (
         <div>

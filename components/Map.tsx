@@ -12,7 +12,6 @@ const Map = ({ lat, lon }: Props) => {
             <iframe
                 className="h-64 md:h-80 w-full overflow-hidden rounded-2xl"
                 src={`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=10&overlay=wind&product=ecmwf&level=surface&lat=${lat}&lon=${lon}&message=true`}
-                // frameBorder="0"
             ></iframe>
             </div>
         </section>

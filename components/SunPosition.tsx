@@ -25,7 +25,6 @@ const calculateSunPosition = (sunrise: number, sunset: number) => {
 
 const SunPosition = ({ sunrise, sunset }: Props) => {
     const dayProgress = calculateSunPosition(sunrise, sunset);
-    // const dayProgress = 100;
 
     return (
         <section>
@@ -69,26 +68,3 @@ const SunPosition = ({ sunrise, sunset }: Props) => {
 };
 
 export default SunPosition;
-
-{
-    /* <div
-className="relative h-[10rem] w-full -translate-y-4 bg-gray-600 p-1"
-style={{
-    clipPath: 'ellipse(50% 70% at 50% 100%)',
-}}
->
-<div
-    className="absolute inset-0 bg-yellow-500"
-    style={{
-        width: `${dayProgress}%`,
-    }}
-></div>
-
-<div
-    className="h-[9.75rem] w-full bg-gray-800"
-    style={{
-        clipPath: 'ellipse(50% 70% at 50% 100%)',
-    }}
-></div>
-</div> */
-}
